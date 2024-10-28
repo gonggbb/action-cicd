@@ -1,17 +1,15 @@
-name: vitepress App CI/CD
+name: Deploy VitePress to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main  # 当推送到 main 分支时触发部署
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: pwd
-        run: pwd
-
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -21,18 +19,19 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
-        run: npm i
+        run: npm install
 
       - name: Build project
         run: npm run docs:build
 
+      # 检查构建目录内容
+      - name: List directory contents
+        run: ls -R docs/.vitepress
+
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with: 
-          branch: gh-pages
-          folder: docs/.vitepress/dist
+          branch: gh-pages  # 部署的目标分支
+          folder: docs/.vitepress/dist  # VitePress 默认的输出目录
           token: ${{ secrets.GITHUB_TOKEN }}
-          clean: true
-
-      - name: Deployment complete
-        run: echo "Deployment to GitHub Pages complete!"
+          clean: true  # 清理 gh-pages 分支上现有文件，避免重复
