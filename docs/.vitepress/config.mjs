@@ -2,9 +2,9 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "vitepress-blog",
-   base: '/action-cicd/',  // 设置仓库名作为基路径
+  title: "My Awesome Project",
   description: "A VitePress Site",
+  base: '/action-cicd/',
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
