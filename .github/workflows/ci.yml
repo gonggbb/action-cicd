@@ -9,11 +9,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: pwd
+        run: pwd
+
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+      - uses: actions/setup-node@v4
         with:
           node-version: '20'
 
@@ -23,6 +26,18 @@ jobs:
 
       - name: Build project
         run: npm run docs:build
+
+      - name: Build project
+        run: npm run docs:build
+
+      - name: JamesIves 
+        uses: JamesIves/github-pages-deploy-action@v4
+        with: 
+          branch: gh-pages
+          folder: .vitepress/dist 
+        
+      - name: 目录 
+        run: ls
 
       - name: Deploy
         if: success()
