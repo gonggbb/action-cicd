@@ -23,21 +23,17 @@ jobs:
       - name: Install dependencies
         run: npm i
 
-
       - name: Build project
         run: npm run docs:build
-
-      - name: Build project
-        run: npm run docs:build
-
+        
+      - name: 目录 
+        run: ls
+        
       - name: JamesIves 
         uses: JamesIves/github-pages-deploy-action@v4
         with: 
           branch: gh-pages
           folder: .vitepress/dist 
-        
-      - name: 目录 
-        run: ls
 
       - name: Deploy
         if: success()
