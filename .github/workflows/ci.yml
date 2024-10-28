@@ -32,7 +32,7 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with: 
           branch: gh-pages  # 部署的目标分支
-          folder: docs/.vitepress/dist  # VitePress 默认的输出目录
+          folder: 。、docs/.vitepress/dist  # VitePress 默认的输出目录
           token: ${{ secrets.GITHUB_TOKEN }}
           clean: true  # 清理 gh-pages 分支上现有文件，避免重复
           create_dot_nojekyll: true  # 自动创建 .nojekyll 文件
