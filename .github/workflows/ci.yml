@@ -35,3 +35,5 @@ jobs:
           folder: docs/.vitepress/dist  # VitePress 默认的输出目录
           token: ${{ secrets.GITHUB_TOKEN }}
           clean: true  # 清理 gh-pages 分支上现有文件，避免重复
+          create_dot_nojekyll: true  # 自动创建 .nojekyll 文件
+          
