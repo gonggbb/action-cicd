@@ -30,7 +30,9 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with: 
           branch: gh-pages
-          folder: ./.vitepress/dist
+          folder: docs/.vitepress/dist
+          token: ${{ secrets.GITHUB_TOKEN }}
+          clean: true
 
       - name: Deployment complete
         run: echo "Deployment to GitHub Pages complete!"
