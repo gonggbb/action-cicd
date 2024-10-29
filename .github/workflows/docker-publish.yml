@@ -26,10 +26,6 @@ jobs:
           username: ${{ vars.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
           
-      # - name: login Docker
-      #   run: |
-      #     docker login -u gamesgong
-
       - name: Build Docker image
         run: |
           docker build -t ${{ vars.DOCKERHUB_USERNAME }}/vitepress-site:latest .
@@ -37,3 +33,6 @@ jobs:
       - name: Push Docker image
         run: |
           docker push ${{ vars.DOCKERHUB_USERNAME }}/vitepress-site:latest
+      # 输出页面的URL
+      - name: Output page URL
+        run: echo "Page URL: ${{ steps.deployment.outputs.page_url }}"
