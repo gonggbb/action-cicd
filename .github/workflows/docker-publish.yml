@@ -26,14 +26,14 @@ jobs:
           username: ${{ vars.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
           
-      - name: login Docker
-        run: |
-          docker login -u gamesgong
+      # - name: login Docker
+      #   run: |
+      #     docker login -u gamesgong
 
       - name: Build Docker image
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/vitepress-site:latest .
+          docker build -t ${{ vars.DOCKERHUB_USERNAME }}/vitepress-site:latest .
 
       - name: Push Docker image
         run: |
-          docker push ${{ secrets.DOCKER_USERNAME }}/vitepress-site:latest
+          docker push ${{ vars.DOCKERHUB_USERNAME }}/vitepress-site:latest
